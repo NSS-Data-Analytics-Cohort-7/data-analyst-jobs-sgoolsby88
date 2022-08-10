@@ -19,8 +19,8 @@ Or location ='KY';
 --Question4
 Select * From data_analyst_jobs
 Where location = 'TN'
-And star_rating >= '4';
---Answer: 4
+And star_rating > '4';
+--Answer: 3
 
 --Question5
 Select * From data_analyst_jobs
@@ -46,7 +46,7 @@ Where location = 'CA';
 --Answer: 230
 
 --Question9
-Select company, Avg(star_rating)
+Select company, ROUND(Avg(star_rating),2) as Avg_rating
 From data_analyst_jobs
 Where review_count > 5000
 And company IS NOT null
@@ -71,8 +71,8 @@ With an Avg score of 4.199999809 */
 --Question11
 Select count(distinct title)
 From data_analyst_jobs
-Where title like '%nalyst%';
---Answer: 757
+Where UPPER(title) like UPPER('%Analyst%');
+--Answer: 774
 
 --Question12
 Select distinct(title)
@@ -80,54 +80,18 @@ From data_analyst_jobs
 Where title Not Like '%analy%'
 And title Not Like '%Analy%'
 And title Not Like '%ANALY%';
---Answer: 4
+--Answer: 4,Tableau
 
 --Bonus
 Select count(title) , domain
 From data_analyst_jobs
 Where domain IS Not null
 And skill like '%SQL%'
-And days_since_posting >= 21
+And days_since_posting > 21
 Group By domain
-Order by count(domain) desc;
---Answer:26
-
-Select *
-From data_analyst_jobs
-Where domain Is Not null
-and days_since_posting >= 21
-and skill Like '%SQL%'
-Order By days_since_posting;
-/* Answer: Philanthropy Data Analyst(Fundraising)
-           SQL Data Analyst-Applied Technology-Tax
-           Health Data Analyst-Experienced*/
-
-Select *
-From data_analyst_jobs
-Where domain Is Not null
-And days_since_posting >= 21
-And skill Like '%SQL%'
-And title Like '%Philanthropy Data Analyst (Fundraising)%'
-Order by days_since_posting;
---Answer: 3
-
-Select *
-From data_analyst_jobs
-Where domain Is Not null
-And days_since_posting >= 21
-And skill Like '%SQL%'
-And title Like '%SQL Data Analyst%'
-And title like '%Tax%'
-Order by days_since_posting;
---Answer: 4
-
-Select *
-From data_analyst_jobs
-Where domain Is Not null
-And days_since_posting >= 21
-And skill Like '%SQL%'
-And title Like '%Health Data Analyst%' 
-and title Like '%Experienced%'
-Order by days_since_posting;
---Answer: 1
-
+Order by count(title) desc
+Limit 4;
+--Answer:62,Internet and Software
+        --Banks and Financial Services
+        --Consulting and Business Services
+        --Health Care
