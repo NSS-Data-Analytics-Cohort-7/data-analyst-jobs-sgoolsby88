@@ -92,6 +92,6 @@ Group By domain
 Order by count(title) desc
 Limit 4;
 --Answer:62,Internet and Software
-        --Banks and Financial Services
-        --Consulting and Business Services
-        --Health Care
+        --61,Banks and Financial Services
+        --57,Consulting and Business Services
+        --52,Health Care
